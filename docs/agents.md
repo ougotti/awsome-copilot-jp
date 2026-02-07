@@ -1,0 +1,490 @@
+# Agents 一覧と活用ガイド
+
+> [github/awesome-copilot](https://github.com/github/awesome-copilot) で公開されている **145 個の Agents** を日本語で解説します。
+
+## Agents とは
+
+Agents は、Copilot を特定ドメインの**専門家ペルソナ**として振る舞わせる定義ファイルです。MCP（Model Context Protocol）サーバーと連携させることで、外部ツールやサービスと直接やり取りする能力を持たせることもできます。
+
+Instructions が「コードを書くときのルール」なら、Agents は「誰に相談するか」を選ぶ仕組みです。
+
+### 設定方法
+
+```
+.github/
+  agents/
+    code-reviewer.agent.md
+    azure-architect.agent.md
+```
+
+Copilot Chat のエージェント選択で、ビルトインエージェントと並んで選択できるようになります。
+
+---
+
+## カテゴリ別 Agents 一覧
+
+### コード品質・開発プロセス
+
+#### レビュー・品質管理
+
+| ファイル名 | ペルソナ | 活用場面 |
+|-----------|---------|---------|
+| `se-security-reviewer.agent.md` | セキュリティレビュー専門家（OWASP Top 10、Zero Trust） | セキュリティ監査、脆弱性チェック |
+| `se-system-architecture-reviewer.agent.md` | システムアーキテクチャレビュー専門家 | アーキテクチャ検証、WAF 適用 |
+| `se-technical-writer.agent.md` | テクニカルライター | ドキュメント作成、ブログ、チュートリアル |
+| `se-ux-ui-designer.agent.md` | UX リサーチ専門家（JTBD 分析） | ユーザージャーニーマップ、デザインリサーチ |
+| `se-responsible-ai-code.agent.md` | 責任ある AI 専門家 | バイアス防止、アクセシビリティ、倫理的 AI |
+| `se-product-manager-advisor.agent.md` | プロダクトマネージャーアドバイザー | 要件定義、GitHub Issue 作成 |
+| `gilfoyle.agent.md` | 辛辣なコードレビュアー（Silicon Valley 風） | 厳格なコードレビュー |
+| `gilfoyle-code-review.instructions.md` | Gilfoyle スタイルレビュー（Instructions 版） | 厳格なレビュールール |
+| `critical-thinking.agent.md` | 批判的思考エージェント | 仮定の検証、論理的分析 |
+| `devils-advocate.agent.md` | 悪魔の代弁者 | 反対意見の検討、リスク分析 |
+| `wg-code-alchemist.agent.md` | コード錬金術師 | コード変換、リファクタリング |
+| `wg-code-sentinel.agent.md` | コード番人 | コード品質監視 |
+
+**se-security-reviewer.agent.md の特徴:**
+- OWASP Top 10 脆弱性検出
+- AI/LLM システムのセキュリティレビュー（プロンプトインジェクション対策含む）
+- Zero Trust 原則に基づく認証・認可検証
+- `docs/code-review/` に Markdown レポート生成
+- **MCP ツール:** `codebase`, `edit/editFiles`, `search`, `problems`
+
+---
+
+#### 計画・設計
+
+| ファイル名 | ペルソナ | 活用場面 |
+|-----------|---------|---------|
+| `plan.agent.md` | 戦略的計画・アーキテクチャアシスタント | コードベース分析、実装戦略策定 |
+| `planner.agent.md` | 実装計画作成エージェント（コード変更なし） | Markdown 形式の計画書作成 |
+| `prd.agent.md` | シニアプロダクトマネージャー | PRD（プロダクト要件定義書）作成 |
+| `specification.agent.md` | 仕様書作成エージェント | AI 向け仕様書生成 |
+| `implementation-plan.agent.md` | 実装計画エージェント（AI-to-AI） | 機械可読な実装計画 |
+| `task-planner.agent.md` | タスクプランナー | タスク分解、優先順位付け |
+| `task-researcher.agent.md` | タスクリサーチャー | 技術調査、情報収集 |
+| `research-technical-spike.agent.md` | 技術スパイク検証エージェント | 技術検証、POC 調査 |
+| `tech-debt-remediation-plan.agent.md` | 技術的負債解消計画 | 負債の可視化と解消計画 |
+| `blueprint-mode.agent.md` | ブループリントモード | 設計図作成 |
+| `blueprint-mode-codex.agent.md` | ブループリントモード（Codex 版） | 設計図 + コード生成 |
+
+**plan.agent.md の特徴:**
+- 「Think First, Code Later」アプローチ
+- コードベース探索とパターン発見
+- 複雑な要件を管理可能な単位に分解
+- 複数の実装オプションとトレードオフ評価
+- **MCP ツール:** `search/codebase`, `vscode/extensions`, `web/fetch`, `web/githubRepo`, `read/problems` 等
+
+**implementation-plan.agent.md の特徴:**
+- AI-to-AI コミュニケーション向けの曖昧さゼロの計画
+- `/plan/` ディレクトリに標準命名で保存
+- ステータスバッジ（Completed, In progress, Planned 等）
+- 標準 ID プレフィックス（REQ-, TASK-, GOAL-）
+- **MCP ツール:** 43 種類のツールを使用
+
+---
+
+#### メンタリング・教育
+
+| ファイル名 | ペルソナ | 活用場面 |
+|-----------|---------|---------|
+| `mentor.agent.md` | メンター（ソクラテス式指導） | 新人指導、学習支援 |
+| `code-tour.agent.md` | CodeTour 作成専門家 | コードベースウォークスルー作成 |
+| `demonstrate-understanding.agent.md` | 理解度確認エージェント | 学習確認、概念説明 |
+| `microsoft-study-mode.agent.md` | Microsoft Study モード | Microsoft 技術学習 |
+| `microsoft_learn_contributor.agent.md` | Microsoft Learn コントリビューター | 学習コンテンツ作成 |
+
+**mentor.agent.md の特徴:**
+- ソクラテス式メソッドと「5 Whys」技法
+- 直接解答せず、問題解決の思考をガイド
+- 安全でない実践や短期的解決の長期コストを指摘
+- 表、図、GIF を使った視覚的説明
+- **MCP ツール:** `codebase`, `web/fetch`, `findTestFiles`, `githubRepo`, `search`, `usages`
+
+---
+
+#### デバッグ・保守
+
+| ファイル名 | ペルソナ | 活用場面 |
+|-----------|---------|---------|
+| `debug.agent.md` | システマティックデバッグ専門家 | バグ調査、根本原因分析 |
+| `janitor.agent.md` | ユニバーサルジャニター | コードクリーンアップ、技術的負債解消 |
+| `refine-issue.agent.md` | Issue 改善エージェント | GitHub Issue の詳細化 |
+| `address-comments.agent.md` | コメント対応エージェント | PR コメントへの対応 |
+
+**debug.agent.md の特徴:**
+- 4 フェーズの構造化アプローチ（問題評価、調査、解決、品質保証）
+- エラー分析とコードベース検査
+- 変数状態、データフロー、制御ロジックの追跡
+- **MCP ツール:** `edit/editFiles`, `search`, `execute/runInTerminal`, `read/problems`, `execute/runTests` 等 12 種類
+
+**janitor.agent.md の特徴:**
+- 「Less Code = Less Debt」の原則
+- 未使用の関数、変数、インポート、デッドコード削除
+- 複雑なパターンの簡略化（インライン化、ネスト解消）
+- 古いテスト、コメント、ボイラープレート削除
+- **MCP ツール:** 30 種類以上
+
+---
+
+### 言語・フレームワーク専門家
+
+#### .NET / C#
+
+| ファイル名 | ペルソナ | 活用場面 |
+|-----------|---------|---------|
+| `CSharpExpert.agent.md` | C# エキスパート | C# 開発全般 |
+| `expert-dotnet-software-engineer.agent.md` | .NET ソフトウェアエンジニア | .NET アーキテクチャ、SOLID |
+| `csharp-dotnet-janitor.agent.md` | C#/.NET ジャニター | .NET コードクリーンアップ |
+| `dotnet-upgrade.agent.md` | .NET アップグレード専門家 | フレームワーク移行 |
+| `dotnet-maui.agent.md` | .NET MAUI 専門家 | クロスプラットフォームアプリ |
+| `WinFormsExpert.agent.md` | WinForms エキスパート | Windows フォームアプリ |
+| `semantic-kernel-dotnet.agent.md` | Semantic Kernel（.NET）専門家 | AI/ML .NET 開発 |
+| `microsoft-agent-framework-dotnet.agent.md` | Microsoft Agent Framework（.NET） | エージェント開発 |
+
+**expert-dotnet-software-engineer.agent.md の特徴:**
+- Anders Hejlsberg、Robert C. Martin、Kent Beck の教えに基づく
+- async/await パターンと依存性注入
+- Repository、Unit of Work、CQRS、Event Sourcing パターン
+- xUnit, NUnit, MSTest による TDD
+- **MCP ツール:** `codebase`, `search`, `edit`, `runTests`, `microsoft.docs.mcp` 等 18 種類
+
+---
+
+#### JavaScript / TypeScript
+
+| ファイル名 | ペルソナ | 活用場面 |
+|-----------|---------|---------|
+| `expert-nextjs-developer.agent.md` | Next.js 16 エキスパート | Next.js フルスタック開発 |
+| `expert-react-frontend-engineer.agent.md` | React 19.2 フロントエンドエンジニア | React SPA 開発 |
+| `electron-angular-native.agent.md` | Electron + Angular ネイティブ | デスクトップアプリ |
+
+**expert-nextjs-developer.agent.md の特徴:**
+- App Router、Server Components、Cache Components
+- Turbopack（デフォルトバンドラー）
+- v16 の破壊的変更（async params/searchParams）に対応
+- `next/image`, `next/font`, React Compiler でパフォーマンス最適化
+- **MCP ツール:** `codebase`, `edit/editFiles`, `runTests`, `figma-dev-mode-mcp-server` 等
+
+**expert-react-frontend-engineer.agent.md の特徴:**
+- React 19.2 の新機能: `<Activity>`, `useEffectEvent()`, `cacheSignal`
+- モダン Hooks: `use()`, `useFormStatus`, `useOptimistic`, `useActionState`
+- Server Components、Actions、クライアント/サーバー境界
+- WCAG 2.1 AA アクセシビリティ準拠
+- **MCP ツール:** 18 種類以上
+
+---
+
+#### その他の言語
+
+| ファイル名 | ペルソナ | 活用場面 |
+|-----------|---------|---------|
+| `laravel-expert-agent.agent.md` | Laravel 12+ エキスパート | PHP Laravel 開発 |
+| `shopify-expert.agent.md` | Shopify エキスパート | Shopify テーマ/アプリ開発 |
+| `salesforce-expert.agent.md` | Salesforce テクニカルアーキテクト | Salesforce 開発 |
+| `drupal-expert.agent.md` | Drupal エキスパート | Drupal CMS 開発 |
+| `pimcore-expert.agent.md` | Pimcore エキスパート | Pimcore PIM/CMS |
+| `expert-cpp-software-engineer.agent.md` | C++ ソフトウェアエンジニア | C++ 開発 |
+| `clojure-interactive-programming.agent.md` | Clojure インタラクティブプログラミング | Clojure REPL 開発 |
+
+---
+
+### MCP サーバー開発専門家
+
+| ファイル名 | ペルソナ | 活用場面 |
+|-----------|---------|---------|
+| `python-mcp-expert.agent.md` | Python MCP エキスパート | Python MCP サーバー構築 |
+| `typescript-mcp-expert.agent.md` | TypeScript MCP エキスパート | TypeScript MCP サーバー構築 |
+| `csharp-mcp-expert.agent.md` | C# MCP エキスパート | C# MCP サーバー構築 |
+| `go-mcp-expert.agent.md` | Go MCP エキスパート | Go MCP サーバー構築 |
+| `java-mcp-expert.agent.md` | Java MCP エキスパート | Java MCP サーバー構築 |
+| `rust-mcp-expert.agent.md` | Rust MCP エキスパート | Rust MCP サーバー構築 |
+| `kotlin-mcp-expert.agent.md` | Kotlin MCP エキスパート | Kotlin MCP サーバー構築 |
+| `ruby-mcp-expert.agent.md` | Ruby MCP エキスパート | Ruby MCP サーバー構築 |
+| `php-mcp-expert.agent.md` | PHP MCP エキスパート | PHP MCP サーバー構築 |
+| `swift-mcp-expert.agent.md` | Swift MCP エキスパート | Swift MCP サーバー構築 |
+
+**MCP エキスパートの共通特徴:**
+- 各言語の公式 MCP SDK に精通
+- プロジェクト構造の完全なスキャフォールディング
+- ツール、リソース、プロンプトの実装ガイダンス
+- トランスポート設定（stdio, HTTP/SSE）
+- Claude Desktop 統合とテスト方法
+
+---
+
+### インフラ・DevOps
+
+#### CI/CD・DevOps
+
+| ファイル名 | ペルソナ | 活用場面 |
+|-----------|---------|---------|
+| `devops-expert.agent.md` | DevOps エキスパート | DevOps ライフサイクル全般 |
+| `github-actions-expert.agent.md` | GitHub Actions エキスパート | GitHub Actions CI/CD |
+| `se-gitops-ci-specialist.agent.md` | GitOps CI スペシャリスト | GitOps ワークフロー |
+
+**devops-expert.agent.md の特徴:**
+- DevOps ライフサイクル 8 フェーズ（plan, code, build, test, release, deploy, operate, monitor）
+- CI/CD パイプライン、IaC、テストフレームワーク自動化
+- DORA メトリクス（deployment frequency, lead time, MTTR, failure rate）
+- 文化的ガイダンス（サイロ解消、ブレームレス・ポストモーテム）
+- **MCP ツール:** `codebase`, `edit/editFiles`, `terminalCommand`, `githubRepo`, `runCommands`, `runTasks`
+
+**github-actions-expert.agent.md の特徴:**
+- 最小権限と OIDC 認証によるセキュリティ強化
+- CodeQL SAST、依存関係レビュー、Trivy コンテナスキャン、SBOM 生成
+- キャッシュ戦略と並行制御による最適化
+- 15 項目のセキュリティチェックリスト
+
+---
+
+#### Kubernetes・SRE
+
+| ファイル名 | ペルソナ | 活用場面 |
+|-----------|---------|---------|
+| `platform-sre-kubernetes.agent.md` | Kubernetes SRE | K8s 運用・信頼性 |
+| `arch.agent.md` | Arch Linux エキスパート | Arch Linux 環境 |
+| `arch-linux-expert.agent.md` | Arch Linux エキスパート（詳細版） | Arch Linux 管理 |
+| `centos-linux-expert.agent.md` | CentOS エキスパート | CentOS 環境 |
+| `debian-linux-expert.agent.md` | Debian エキスパート | Debian 環境 |
+| `fedora-linux-expert.agent.md` | Fedora エキスパート | Fedora 環境 |
+
+**platform-sre-kubernetes.agent.md の特徴:**
+- 5 フェーズのデプロイ方法論（計画、マニフェスト生成、検証、監視付きロールアウト、テスト済みロールバック）
+- 必須セキュリティ設定（runAsNonRoot, readOnlyRootFilesystem）
+- 高可用性パターン（マルチレプリカ、Pod Disruption Budgets、ゾーン分散）
+- kubectl dry-run、kubeconform によるデプロイ前検証
+
+---
+
+#### Terraform・IaC
+
+| ファイル名 | ペルソナ | 活用場面 |
+|-----------|---------|---------|
+| `terraform.agent.md` | Terraform インフラ専門家 | Terraform IaC 全般 |
+| `terraform-iac-reviewer.agent.md` | Terraform IaC レビュアー | IaC コードレビュー |
+| `terraform-azure-planning.agent.md` | Terraform Azure 計画 | Azure インフラ計画 |
+| `terraform-azure-implement.agent.md` | Terraform Azure 実装 | Azure インフラ実装 |
+
+**terraform.agent.md の特徴:**
+- パブリック/プライベート Terraform レジストリ連携
+- 厳格なファイル構造（main.tf, variables.tf, outputs.tf, README.md）
+- HCP Terraform ワークスペース管理と plan/apply オーケストレーション
+- ハードコードシークレット禁止、最小権限 IAM
+- **MCP ツール:** Terraform MCP サーバー（プロバイダー/モジュール検出、ワークスペース操作、実行管理）
+
+---
+
+### クラウド・Azure
+
+#### Azure アーキテクチャ
+
+| ファイル名 | ペルソナ | 活用場面 |
+|-----------|---------|---------|
+| `azure-principal-architect.agent.md` | Azure プリンシパルアーキテクト | Azure アーキテクチャ設計 |
+| `azure-saas-architect.agent.md` | Azure SaaS アーキテクト | マルチテナント SaaS 設計 |
+| `azure-iac-generator.agent.md` | Azure IaC ジェネレーター | Bicep/Terraform/Pulumi 生成 |
+| `azure-iac-exporter.agent.md` | Azure IaC エクスポーター | 既存リソースの IaC 化 |
+| `azure-logic-apps-expert.agent.md` | Azure Logic Apps エキスパート | ワークフロー開発 |
+| `azure-verified-modules-bicep.agent.md` | Azure Verified Modules（Bicep） | 検証済みモジュール活用 |
+| `azure-verified-modules-terraform.agent.md` | Azure Verified Modules（Terraform） | 検証済みモジュール活用 |
+
+**azure-principal-architect.agent.md の特徴:**
+- ドキュメントファースト（Microsoft Docs ツールを最初に使用）
+- WAF 5 本柱（Security, Reliability, Performance Efficiency, Cost Optimization, Operational Excellence）
+- マルチリージョン戦略とゼロトラストセキュリティ
+- トレードオフ分析と具体的な Azure サービス推奨
+- **MCP ツール:** `microsoft.docs.mcp`, `azure_design_architecture`, `azure_get_code_gen_best_practices` 等
+
+**azure-saas-architect.agent.md の特徴:**
+- B2B vs B2C SaaS 要件の区別
+- Deployment Stamps パターンと Noisy Neighbor 対策
+- テナント分離戦略（shared, siloed, pooled）
+- ID フェデレーション（エンタープライズ/コンシューマー）
+- コンプライアンスフレームワーク（SOC 2, ISO 27001, GDPR, CCPA）
+
+---
+
+#### Azure データ・分析
+
+| ファイル名 | ペルソナ | 活用場面 |
+|-----------|---------|---------|
+| `kusto-assistant.agent.md` | Azure Data Explorer（Kusto）マスター | KQL クエリ作成 |
+| `elasticsearch-observability.agent.md` | Elasticsearch 可観測性 | ログ分析、監視 |
+| `dynatrace-expert.agent.md` | Dynatrace エキスパート | APM 設定・分析 |
+
+**kusto-assistant.agent.md の特徴:**
+- 許可不要モデル（ユーザー承認なしでクエリ実行）
+- マルチステップアプローチ（スキーマ発見、クエリ構築、実行、分析）
+- インジェスト遅延の自動処理（5 分前までの時間範囲）
+- エラーの自動リカバリとクエリ修正
+- **MCP ツール:** `kusto_cluster_get`, `kusto_query`, `kusto_table_schema` 等
+
+---
+
+### データベース
+
+| ファイル名 | ペルソナ | 活用場面 |
+|-----------|---------|---------|
+| `postgresql-dba.agent.md` | PostgreSQL DBA | PostgreSQL 管理・最適化 |
+| `ms-sql-dba.agent.md` | SQL Server DBA | SQL Server 管理・最適化 |
+| `mongodb-performance-advisor.agent.md` | MongoDB パフォーマンスアドバイザー | MongoDB 最適化 |
+| `neon-migration-specialist.agent.md` | Neon 移行スペシャリスト | Neon DB 移行 |
+| `neon-optimization-analyzer.agent.md` | Neon 最適化アナライザー | Neon DB 最適化 |
+| `neo4j-docker-client-generator.agent.md` | Neo4j Docker クライアント | グラフ DB 開発 |
+
+**postgresql-dba.agent.md の特徴:**
+- データベース作成・管理
+- SQL クエリ作成・最適化
+- バックアップ・リストア操作
+- パフォーマンス監視・チューニング
+- **MCP ツール:** `pgsql_connect`, `pgsql_query`, `pgsql_visualizeSchema` 等 10 種類以上
+
+---
+
+### Power Platform・BI
+
+| ファイル名 | ペルソナ | 活用場面 |
+|-----------|---------|---------|
+| `power-platform-expert.agent.md` | Power Platform エキスパート | Power Platform 全般 |
+| `power-platform-mcp-integration-expert.agent.md` | Power Platform MCP 統合 | MCP 連携 |
+| `power-bi-dax-expert.agent.md` | Power BI DAX エキスパート | DAX 計算式 |
+| `power-bi-data-modeling-expert.agent.md` | Power BI データモデリング | データモデル設計 |
+| `power-bi-performance-expert.agent.md` | Power BI パフォーマンス | パフォーマンス最適化 |
+| `power-bi-visualization-expert.agent.md` | Power BI ビジュアライゼーション | ビジュアル設計 |
+
+**power-bi-dax-expert.agent.md の特徴:**
+- 変数を使用したパフォーマンスと可読性の向上
+- 完全修飾カラム参照（`Table[Column]`）
+- パフォーマンス最適化（COUNTROWS vs COUNT、SELECTEDVALUE vs VALUES）
+- DIVIDE 関数（除算演算子の代わり）
+- **MCP ツール:** `microsoft.docs.mcp`
+
+---
+
+### Microsoft 365・Copilot
+
+| ファイル名 | ペルソナ | 活用場面 |
+|-----------|---------|---------|
+| `declarative-agents-architect.agent.md` | M365 Declarative Agents アーキテクト | M365 Copilot エージェント開発 |
+| `mcp-m365-agent-expert.agent.md` | M365 エージェント MCP エキスパート | M365 MCP 連携 |
+
+**declarative-agents-architect.agent.md の特徴:**
+- JSON スキーマ v1.5 準拠（文字数制限、バリデーション要件）
+- TypeSpec による型安全なエージェント定義
+- VS Code 拡張による M365 Agents Toolkit 統合
+- 11 種類のエージェント機能（WebSearch, GraphConnectors, PowerPlatform, CustomConnectors 等）
+
+---
+
+### AI・機械学習
+
+| ファイル名 | ペルソナ | 活用場面 |
+|-----------|---------|---------|
+| `semantic-kernel-python.agent.md` | Semantic Kernel（Python）専門家 | Python AI/ML 開発 |
+| `microsoft-agent-framework-python.agent.md` | Microsoft Agent Framework（Python） | Python エージェント開発 |
+| `comet-opik.agent.md` | Comet Opik | ML 実験管理 |
+
+---
+
+### テスト
+
+| ファイル名 | ペルソナ | 活用場面 |
+|-----------|---------|---------|
+| `playwright-tester.agent.md` | Playwright テスター | E2E テスト自動化 |
+| `tdd-red.agent.md` | TDD Red フェーズ | 失敗テスト作成 |
+| `tdd-green.agent.md` | TDD Green フェーズ | テスト合格コード実装 |
+| `tdd-refactor.agent.md` | TDD Refactor フェーズ | テスト維持リファクタリング |
+| `diffblue-cover.agent.md` | Diffblue Cover | Java テスト自動生成 |
+
+---
+
+### 移行・モダナイゼーション
+
+| ファイル名 | ペルソナ | 活用場面 |
+|-----------|---------|---------|
+| `modernization.agent.md` | モダナイゼーション専門家 | レガシーシステム刷新 |
+| `arm-migration.agent.md` | ARM 移行専門家 | ARM テンプレート移行 |
+
+---
+
+### 外部サービス連携
+
+| ファイル名 | ペルソナ | 活用場面 |
+|-----------|---------|---------|
+| `octopus-deploy-release-notes-mcp.agent.md` | Octopus Deploy リリースノート | デプロイ自動化 |
+| `launchdarkly-flag-cleanup.agent.md` | LaunchDarkly フラグクリーンアップ | フィーチャーフラグ管理 |
+| `pagerduty-incident-responder.agent.md` | PagerDuty インシデント対応 | 障害対応 |
+| `jfrog-sec.agent.md` | JFrog セキュリティ | 依存関係セキュリティ |
+| `stackhawk-security-onboarding.agent.md` | StackHawk セキュリティオンボーディング | セキュリティテスト |
+| `apify-integration-expert.agent.md` | Apify 統合エキスパート | Web スクレイピング |
+| `amplitude-experiment-implementation.agent.md` | Amplitude 実験実装 | A/B テスト |
+| `monday-bug-fixer.agent.md` | Monday.com バグ修正 | タスク管理連携 |
+| `lingodotdev-i18n.agent.md` | Lingo.dev i18n | 国際化 |
+| `atlassian-requirements-to-jira.agent.md` | Atlassian 要件 → Jira | Jira 連携 |
+| `context7.agent.md` | Context7 | コンテキスト管理 |
+
+---
+
+### 高度なモード
+
+| ファイル名 | ペルソナ | 活用場面 |
+|-----------|---------|---------|
+| `4.1-Beast.agent.md` | Beast モード（GPT-4.1 風） | 高性能推論 |
+| `Thinking-Beast-Mode.agent.md` | Thinking Beast モード | 段階的思考 |
+| `Ultimate-Transparent-Thinking-Beast-Mode.agent.md` | 究極透明思考 Beast モード | 思考プロセス可視化 |
+| `gpt-5-beast-mode.agent.md` | GPT-5 Beast モード | 最高性能モード |
+| `rust-gpt-4.1-beast-mode.agent.md` | Rust GPT-4.1 Beast モード | Rust 高性能開発 |
+| `voidbeast-gpt41enhanced.agent.md` | VoidBeast GPT-4.1 Enhanced | 拡張推論 |
+| `hlbpa.agent.md` | HLBPA | 高レベル計画 |
+| `droid.agent.md` | Droid | 汎用エージェント |
+
+---
+
+### その他の専門エージェント
+
+| ファイル名 | ペルソナ | 活用場面 |
+|-----------|---------|---------|
+| `principal-software-engineer.agent.md` | プリンシパルソフトウェアエンジニア | 上級エンジニアリング指導 |
+| `software-engineer-agent-v1.agent.md` | ソフトウェアエンジニアエージェント v1 | 汎用開発支援 |
+| `custom-agent-foundry.agent.md` | カスタムエージェントファウンドリ | エージェント作成支援 |
+| `meta-agentic-project-scaffold.agent.md` | メタエージェントプロジェクトスキャフォールド | エージェントプロジェクト雛形 |
+| `adr-generator.agent.md` | ADR ジェネレーター | Architecture Decision Record 生成 |
+| `api-architect.agent.md` | API アーキテクト | API 設計 |
+| `openapi-to-application.agent.md` | OpenAPI → アプリケーション | OpenAPI からコード生成 |
+| `prompt-builder.agent.md` | プロンプトビルダー | プロンプト作成支援 |
+| `prompt-engineer.agent.md` | プロンプトエンジニア | プロンプト最適化 |
+| `technical-content-evaluator.agent.md` | 技術コンテンツ評価者 | コンテンツ品質評価 |
+| `search-ai-optimization-expert.agent.md` | 検索 AI 最適化エキスパート | 検索最適化 |
+| `accessibility.agent.md` | アクセシビリティ専門家 | a11y 対応 |
+| `simple-app-idea-generator.agent.md` | シンプルアプリアイデアジェネレーター | アイデア出し |
+| `repo-architect.agent.md` | リポジトリアーキテクト | プロジェクト構造設計 |
+| `bicep-plan.agent.md` | Bicep 計画 | Bicep IaC 計画 |
+| `bicep-implement.agent.md` | Bicep 実装 | Bicep IaC 実装 |
+| `aem-frontend-specialist.agent.md` | AEM フロントエンド専門家 | Adobe Experience Manager |
+| `cast-imaging-impact-analysis.agent.md` | CAST Imaging 影響分析 | アプリケーション分析 |
+| `cast-imaging-software-discovery.agent.md` | CAST Imaging ソフトウェア発見 | ソフトウェア可視化 |
+| `cast-imaging-structural-quality-advisor.agent.md` | CAST Imaging 構造品質アドバイザー | コード品質分析 |
+
+---
+
+## まとめ
+
+Agents は **145 ファイル** あり、以下のカテゴリに分類されます：
+
+| カテゴリ | ファイル数 | 主な用途 |
+|---------|----------|---------|
+| コード品質・レビュー | 約 15 | セキュリティ、アーキテクチャレビュー |
+| 計画・設計 | 約 15 | PRD、仕様書、実装計画作成 |
+| メンタリング・教育 | 約 5 | 新人指導、学習支援 |
+| デバッグ・保守 | 約 5 | バグ調査、コードクリーンアップ |
+| 言語・フレームワーク専門家 | 約 20 | .NET, React, Laravel 等 |
+| MCP サーバー開発 | 約 10 | 各言語の MCP SDK |
+| インフラ・DevOps | 約 15 | CI/CD, Kubernetes, Terraform |
+| Azure | 約 10 | Azure アーキテクチャ、IaC |
+| データベース | 約 10 | PostgreSQL, SQL Server, MongoDB |
+| Power Platform・BI | 約 10 | Power BI, Power Platform |
+| Microsoft 365 | 約 5 | M365 Copilot エージェント |
+| テスト | 約 5 | TDD, Playwright |
+| その他 | 約 20 | 各種専門エージェント |
+
+プロジェクトの課題に応じて、最適な専門家エージェントを選んで相談しましょう。

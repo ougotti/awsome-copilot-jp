@@ -2,6 +2,16 @@
 
 > [github/awesome-copilot](https://github.com/github/awesome-copilot) リポジトリで公開されている GitHub Copilot のカスタマイズ機能を、日本語で体系的に解説するガイドです。
 
+## 詳細ドキュメント
+
+各カスタマイズの全ファイルを網羅した詳細ガイドはこちら：
+
+| ドキュメント | 内容 |
+|-------------|------|
+| **[Instructions 一覧](docs/instructions.md)** | 168 個の Instructions ファイルの詳細解説 |
+| **[Agents 一覧](docs/agents.md)** | 145 個の Agents ファイルの詳細解説 |
+| **[Prompts 一覧](docs/prompts.md)** | 138 個の Prompts ファイルの詳細解説 |
+
 ## このガイドについて
 
 GitHub Copilot はそのままでも強力なコーディングアシスタントですが、**カスタマイズ**を適用することで、チームのコーディング規約に合ったコードを生成させたり、特定のフレームワークに精通した専門家として振る舞わせたりできます。
