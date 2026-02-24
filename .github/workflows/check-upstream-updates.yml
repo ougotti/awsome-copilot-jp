@@ -1,0 +1,94 @@
+name: awesome-copilot 更新チェック
+
+on:
+  schedule:
+    # 毎週月曜 09:00 JST (00:00 UTC) に実行
+    - cron: '0 0 * * 1'
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Dry run（Issue を作成しない）'
+        required: false
+        default: 'false'
+        type: boolean
+
+jobs:
+  check-updates:
+    name: upstream の新規ファイルをチェック
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      contents: read
+
+    steps:
+      - name: リポジトリをチェックアウト
+        uses: actions/checkout@v4
+
+      - name: Python セットアップ
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: 更新チェックスクリプトを実行
+        id: check
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          UPSTREAM_REPO: github/awesome-copilot
+          TRACKED_DIRS: instructions,agents,prompts
+          TRACKED_FILE: scripts/known-files.json
+        run: python scripts/check_upstream_updates.py
+
+      - name: 新規ファイルがある場合 Issue を作成
+        if: steps.check.outputs.has_new_files == 'true' && inputs.dry_run != 'true'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const newFilesJson = fs.readFileSync('new_files_report.json', 'utf8');
+            const report = JSON.parse(newFilesJson);
+
+            const sections = [];
+            for (const [dir, files] of Object.entries(report)) {
+              if (files.length > 0) {
+                const fileList = files.map(f =>
+                  `- [\`${f}\`](https://github.com/github/awesome-copilot/blob/main/${dir}/${f})`
+                ).join('\n');
+                const dirLabel = dir === 'instructions' ? 'Instructions' :
+                                 dir === 'agents' ? 'Agents' : 'Prompts';
+                sections.push(`### ${dirLabel} (${files.length} 件)\n\n${fileList}`);
+              }
+            }
+
+            const totalCount = Object.values(report).flat().length;
+            const body = [
+              `## awesome-copilot に新しいファイルが追加されました`,
+              ``,
+              `[github/awesome-copilot](https://github.com/github/awesome-copilot) に **${totalCount} 個**の新しいカスタマイズファイルが追加されました。`,
+              `日本語ドキュメント（\`docs/\`）への解説追加を検討してください。`,
+              ``,
+              ...sections,
+              ``,
+              `---`,
+              ``,
+              `### 対応方法`,
+              ``,
+              `1. 上記ファイルの内容を確認する`,
+              `2. 該当カテゴリの \`docs/instructions.md\` / \`docs/agents.md\` / \`docs/prompts.md\` に解説を追加する`,
+              `3. \`scripts/known-files.json\` を更新して追跡リストに加える`,
+              ``,
+              `> このIssueは [check-upstream-updates](../../actions/workflows/check-upstream-updates.yml) ワークフローにより自動生成されました。`,
+            ].join('\n');
+
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: `[更新通知] awesome-copilot に ${totalCount} 個の新規ファイル追加 (${new Date().toISOString().split('T')[0]})`,
+              body: body,
+              labels: ['upstream-update', 'documentation'],
+            });
+
+            console.log(`Issue created: ${totalCount} new files found`);
+
+      - name: 新規ファイルなし（スキップ）
+        if: steps.check.outputs.has_new_files != 'true'
+        run: echo "新規ファイルはありませんでした。"
