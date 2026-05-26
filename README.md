@@ -145,10 +145,10 @@ Prompts は、Copilot Chat の `/` コマンドから呼び出せる再利用可
 
 | プロンプト名 | 用途 | 活用場面 |
 |-------------|------|---------|
-| [**create-readme**](https://github.com/github/awesome-copilot/blob/main/prompts/create-readme.prompt.md) | README.md の作成 | 新規プロジェクトの初期セットアップ |
-| [**create-spec**](https://github.com/github/awesome-copilot/blob/main/prompts/create-specification.prompt.md) | 技術仕様書の作成 | 機能開発の設計フェーズ |
-| [**create-adr**](https://github.com/github/awesome-copilot/blob/main/prompts/create-architectural-decision-record.prompt.md) | Architecture Decision Record の作成 | アーキテクチャ上の意思決定を記録 |
-| [**component-docs**](https://github.com/github/awesome-copilot/blob/main/prompts/create-oo-component-documentation.prompt.md) | コンポーネントドキュメント | ライブラリ・UI コンポーネントの文書化 |
+| [**create-readme**](https://github.com/github/awesome-copilot/tree/main/skills/create-readme) | README.md の作成 | 新規プロジェクトの初期セットアップ |
+| [**create-spec**](https://github.com/github/awesome-copilot/tree/main/skills/create-specification) | 技術仕様書の作成 | 機能開発の設計フェーズ |
+| [**create-adr**](https://github.com/github/awesome-copilot/tree/main/skills/create-architectural-decision-record) | Architecture Decision Record の作成 | アーキテクチャ上の意思決定を記録 |
+| [**component-docs**](https://github.com/github/awesome-copilot/tree/main/skills/create-oo-component-documentation) | コンポーネントドキュメント | ライブラリ・UI コンポーネントの文書化 |
 
 #### コード生成
 
@@ -163,26 +163,26 @@ Prompts は、Copilot Chat の `/` コマンドから呼び出せる再利用可
 
 | プロンプト名 | 用途 | 活用場面 |
 |-------------|------|---------|
-| [**generate-jest-tests**](https://github.com/github/awesome-copilot/blob/main/prompts/javascript-typescript-jest.prompt.md) | Jest テスト生成 | JavaScript/TypeScript ユニットテスト |
-| [**generate-junit-tests**](https://github.com/github/awesome-copilot/blob/main/prompts/java-junit.prompt.md) | JUnit テスト生成 | Java ユニットテスト |
-| [**generate-playwright-tests**](https://github.com/github/awesome-copilot/blob/main/prompts/playwright-generate-test.prompt.md) | Playwright テスト生成 | E2E テストの自動生成 |
-| [**generate-nunit-tests**](https://github.com/github/awesome-copilot/blob/main/prompts/csharp-nunit.prompt.md) | NUnit テスト生成 | .NET ユニットテスト |
+| [**generate-jest-tests**](https://github.com/github/awesome-copilot/tree/main/skills/javascript-typescript-jest) | Jest テスト生成 | JavaScript/TypeScript ユニットテスト |
+| [**generate-junit-tests**](https://github.com/github/awesome-copilot/tree/main/skills/java-junit) | JUnit テスト生成 | Java ユニットテスト |
+| [**generate-playwright-tests**](https://github.com/github/awesome-copilot/tree/main/skills/playwright-generate-test) | Playwright テスト生成 | E2E テストの自動生成 |
+| [**generate-nunit-tests**](https://github.com/github/awesome-copilot/tree/main/skills/csharp-nunit) | NUnit テスト生成 | .NET ユニットテスト |
 
 #### インフラ・DevOps
 
 | プロンプト名 | 用途 | 活用場面 |
 |-------------|------|---------|
-| [**create-dockerfile**](https://github.com/github/awesome-copilot/blob/main/prompts/multi-stage-dockerfile.prompt.md) | Dockerfile 生成 | コンテナ化 |
-| [**create-github-actions**](https://github.com/github/awesome-copilot/blob/main/prompts/create-github-action-workflow-specification.prompt.md) | GitHub Actions ワークフロー生成 | CI/CD セットアップ |
-| [**optimize-sql**](https://github.com/github/awesome-copilot/blob/main/prompts/sql-optimization.prompt.md) | SQL クエリ最適化 | データベースパフォーマンス改善 |
+| [**create-dockerfile**](https://github.com/github/awesome-copilot/tree/main/skills/multi-stage-dockerfile) | Dockerfile 生成 | コンテナ化 |
+| [**create-github-actions**](https://github.com/github/awesome-copilot/tree/main/skills/create-github-action-workflow-specification) | GitHub Actions ワークフロー生成 | CI/CD セットアップ |
+| [**optimize-sql**](https://github.com/github/awesome-copilot/tree/main/skills/sql-optimization) | SQL クエリ最適化 | データベースパフォーマンス改善 |
 
 #### 計画・設計
 
 | プロンプト名 | 用途 | 活用場面 |
 |-------------|------|---------|
-| [**create-epic-breakdown**](https://github.com/github/awesome-copilot/blob/main/prompts/breakdown-epic-pm.prompt.md) | エピックの分解 | アジャイル開発の計画 |
-| [**create-implementation-plan**](https://github.com/github/awesome-copilot/blob/main/prompts/create-implementation-plan.prompt.md) | 実装計画の作成 | 機能開発の計画フェーズ |
-| [**create-architecture-blueprint**](https://github.com/github/awesome-copilot/blob/main/prompts/architecture-blueprint-generator.prompt.md) | アーキテクチャ設計図 | システム設計 |
+| [**create-epic-breakdown**](https://github.com/github/awesome-copilot/tree/main/skills/breakdown-epic-pm) | エピックの分解 | アジャイル開発の計画 |
+| [**create-implementation-plan**](https://github.com/github/awesome-copilot/tree/main/skills/create-implementation-plan) | 実装計画の作成 | 機能開発の計画フェーズ |
+| [**create-architecture-blueprint**](https://github.com/github/awesome-copilot/tree/main/skills/architecture-blueprint-generator) | アーキテクチャ設計図 | システム設計 |
 
 ### 設定方法
 
