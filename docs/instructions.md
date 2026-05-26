@@ -1,6 +1,6 @@
 # Instructions 一覧と活用ガイド
 
-> [github/awesome-copilot](https://github.com/github/awesome-copilot) で公開されている **182 個の Instructions** を日本語で解説します。
+> [github/awesome-copilot](https://github.com/github/awesome-copilot) で公開されている **191 個の Instructions** を日本語で解説します。
 
 ## Instructions とは
 
@@ -63,6 +63,8 @@ applyTo: "**/*.py"
 | [`dotnet-maui.instructions.md`](https://github.com/github/awesome-copilot/blob/main/instructions/dotnet-maui.instructions.md) | .NET MAUI クロスプラットフォーム開発 | モバイル/デスクトップアプリ |
 | [`dotnet-maui-9-to-dotnet-maui-10-upgrade.instructions.md`](https://github.com/github/awesome-copilot/blob/main/instructions/dotnet-maui-9-to-dotnet-maui-10-upgrade.instructions.md) | MAUI 9 → 10 移行 | MAUI アップグレード |
 | [`dotnet-wpf.instructions.md`](https://github.com/github/awesome-copilot/blob/main/instructions/dotnet-wpf.instructions.md) | WPF デスクトップアプリ（MVVM） | Windows デスクトップ |
+| [`mvvm-toolkit.instructions.md`](https://github.com/github/awesome-copilot/blob/main/instructions/mvvm-toolkit.instructions.md) | CommunityToolkit.Mvvm のコーディング規約 | WPF / WinUI / MAUI の MVVM 実装 |
+| [`csharp-razorpages.instructions.md`](https://github.com/github/awesome-copilot/blob/main/instructions/csharp-razorpages.instructions.md) | Razor Pages の設計・セキュリティ規約 | ASP.NET Core Razor Pages 開発 |
 | [`blazor.instructions.md`](https://github.com/github/awesome-copilot/blob/main/instructions/blazor.instructions.md) | Blazor コンポーネント開発 | .NET Web UI |
 | [`aspnet-rest-apis.instructions.md`](https://github.com/github/awesome-copilot/blob/main/instructions/aspnet-rest-apis.instructions.md) | ASP.NET Core REST API 設計 | Web API 構築 |
 | [`winui3.instructions.md`](https://github.com/github/awesome-copilot/blob/main/instructions/winui3.instructions.md) | WinUI 3 / Windows App SDK デスクトップアプリ規約 | Windows デスクトップアプリ |
@@ -82,6 +84,7 @@ applyTo: "**/*.py"
 |-----------|------|---------|
 | [`java.instructions.md`](https://github.com/github/awesome-copilot/blob/main/instructions/java.instructions.md) | Java 開発の基本規約（Records、Pattern Matching） | Java プロジェクト全般 |
 | [`java-mcp-server.instructions.md`](https://github.com/github/awesome-copilot/blob/main/instructions/java-mcp-server.instructions.md) | Java での MCP サーバー開発（Project Reactor） | MCP サーバー構築 |
+| [`copilot-sdk-java.instructions.md`](https://github.com/github/awesome-copilot/blob/main/instructions/copilot-sdk-java.instructions.md) | GitHub Copilot SDK（Java）の開発ガイド | Copilot 組み込み Java アプリ開発 |
 | [`java-11-to-java-17-upgrade.instructions.md`](https://github.com/github/awesome-copilot/blob/main/instructions/java-11-to-java-17-upgrade.instructions.md) | Java 11 → 17 移行ガイド | Java バージョンアップ |
 | [`java-17-to-java-21-upgrade.instructions.md`](https://github.com/github/awesome-copilot/blob/main/instructions/java-17-to-java-21-upgrade.instructions.md) | Java 17 → 21 移行（Virtual Threads） | Java バージョンアップ |
 | [`java-21-to-java-25-upgrade.instructions.md`](https://github.com/github/awesome-copilot/blob/main/instructions/java-21-to-java-25-upgrade.instructions.md) | Java 21 → 25 移行（Class-File API） | Java バージョンアップ |
@@ -326,6 +329,8 @@ applyTo: "**/*.py"
 | [`azure-functions-csharp.instructions.md`](https://github.com/github/awesome-copilot/blob/main/instructions/azure-functions-csharp.instructions.md) | Azure Functions（C# 分離ワーカーモデル） | サーバーレス |
 | [`azure-durable-functions-csharp.instructions.md`](https://github.com/github/awesome-copilot/blob/main/instructions/azure-durable-functions-csharp.instructions.md) | Azure Durable Functions（C#） | ステートフルワークフロー |
 | [`azure-logic-apps-power-automate.instructions.md`](https://github.com/github/awesome-copilot/blob/main/instructions/azure-logic-apps-power-automate.instructions.md) | Logic Apps / Power Automate | ワークフロー自動化 |
+| [`azure-iot-edge-architecture.instructions.md`](https://github.com/github/awesome-copilot/blob/main/instructions/azure-iot-edge-architecture.instructions.md) | Azure IoT Edge 前提のアーキテクチャ検討手順 | スマートシティ / エッジ IoT 設計 |
+| [`azure-naming.instructions.md`](https://github.com/github/awesome-copilot/blob/main/instructions/azure-naming.instructions.md) | Azure CAF 準拠のリソース命名規約 | Azure インフラ命名の標準化 |
 
 **[bicep-code-best-practices.instructions.md](https://github.com/github/awesome-copilot/blob/main/instructions/bicep-code-best-practices.instructions.md) の主なルール:
 - lowerCamelCase で命名（変数、パラメーター、リソース）
@@ -501,6 +506,7 @@ applyTo: "**/*.py"
 | [`agent-safety.instructions.md`](https://github.com/github/awesome-copilot/blob/main/instructions/agent-safety.instructions.md) | AI エージェント安全性・ガバナンス規約 | エージェントシステムの安全設計 |
 | [`context-engineering.instructions.md`](https://github.com/github/awesome-copilot/blob/main/instructions/context-engineering.instructions.md) | Copilot の提案精度を高めるコンテキスト設計 | Copilot の効果的な活用 |
 | [`context7.instructions.md`](https://github.com/github/awesome-copilot/blob/main/instructions/context7.instructions.md) | Context7 による最新外部ドキュメント参照 | バージョン固有の API・フレームワーク開発 |
+| [`caveman-mode.instructions.md`](https://github.com/github/awesome-copilot/blob/main/instructions/caveman-mode.instructions.md) | 低トークン・簡潔回答モード | 短文で素早いやり取り |
 
 **[memory-bank.instructions.md](https://github.com/github/awesome-copilot/blob/main/instructions/memory-bank.instructions.md) の主なルール:
 - セッションリセット後は Memory Bank に完全に依存（必須ファイルを毎回読み込む）
@@ -537,6 +543,7 @@ applyTo: "**/*.py"
 | [`markdown-content-creation.instructions.md`](https://github.com/github/awesome-copilot/blob/main/instructions/markdown-content-creation.instructions.md) | ブログ投稿向け Markdown コンテンツ作成ガイドライン | ブログ・技術記事作成 |
 | [`draw-io.instructions.md`](https://github.com/github/awesome-copilot/blob/main/instructions/draw-io.instructions.md) | draw.io ダイアグラム作成・編集の規約（mxGraph XML） | `.drawio` / `.drawio.svg` ファイル編集 |
 | [`no-heredoc.instructions.md`](https://github.com/github/awesome-copilot/blob/main/instructions/no-heredoc.instructions.md) | ヒアドキュメント禁止（ファイル編集ツール使用を強制） | VS Code Copilot でのファイル操作 |
+| [`hooks.instructions.md`](https://github.com/github/awesome-copilot/blob/main/instructions/hooks.instructions.md) | Copilot Hooks の安全・高速な実装ガイド | `.github/hooks/` のフック作成 |
 
 ---
 
