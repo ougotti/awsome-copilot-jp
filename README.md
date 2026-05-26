@@ -148,7 +148,6 @@ Prompts は、Copilot Chat の `/` コマンドから呼び出せる再利用可
 | [**create-readme**](https://github.com/github/awesome-copilot/tree/main/skills/create-readme) | README.md の作成 | 新規プロジェクトの初期セットアップ |
 | [**create-spec**](https://github.com/github/awesome-copilot/tree/main/skills/create-specification) | 技術仕様書の作成 | 機能開発の設計フェーズ |
 | [**create-adr**](https://github.com/github/awesome-copilot/tree/main/skills/create-architectural-decision-record) | Architecture Decision Record の作成 | アーキテクチャ上の意思決定を記録 |
-| [**component-docs**](https://github.com/github/awesome-copilot/tree/main/skills/create-oo-component-documentation) | コンポーネントドキュメント | ライブラリ・UI コンポーネントの文書化 |
 
 #### コード生成
 
