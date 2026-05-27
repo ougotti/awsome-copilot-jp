@@ -10,6 +10,7 @@
 | **[Agents 一覧](docs/agents.md)** | Copilot を特定ドメインの専門家ペルソナとして振る舞わせるエージェント定義の詳細解説 | 211+ 件 |
 | **[Prompts / Skills 一覧](docs/prompts.md)** | `/` コマンドから呼び出せる再利用可能なタスクテンプレートおよび Skills の詳細解説 | 138+ 件 |
 | **[Claude Code スキル](docs/claude-code-skills.md)** | Claude Code 専用のスラッシュコマンド、カスタムコマンド、フック、CLAUDE.md、MCP 連携の解説 | — |
+| **[Anthropic 公式スキル](docs/anthropics-skills.md)** | [anthropics/skills](https://github.com/anthropics/skills) リポジトリ収録の 17 スキル（docx/pdf/pptx/xlsx 等）の詳細解説 | 17 件 |
 
 ---
 
@@ -385,6 +386,32 @@ Claude Code は Anthropic が提供するターミナルベースのコーディ
 
 ---
 
+## Anthropic 公式スキル
+
+### 概要
+
+[anthropics/skills](https://github.com/anthropics/skills) は Anthropic が公開している Claude 用スキルのリポジトリです。Word・PDF・PowerPoint・Excel などのドキュメント処理スキルや、生成アート・MCP サーバービルドなど 17 種類のスキルが収録されています。
+
+### カテゴリ別スキル一覧
+
+| カテゴリ | スキル | 主な機能 |
+|---------|-------|---------|
+| **ドキュメント処理** | docx / pdf / pptx / xlsx | Word・PDF・PowerPoint・Excel の自動生成・編集・変換 |
+| **クリエイティブ** | algorithmic-art / canvas-design / frontend-design / theme-factory | アート・デザイン・UI の生成 |
+| **開発・技術** | claude-api / mcp-builder / webapp-testing / web-artifacts-builder | API 開発・MCP 構築・Web テスト |
+| **エンタープライズ** | brand-guidelines / doc-coauthoring / internal-comms / slack-gif-creator / skill-creator | 組織コミュニケーション・カスタムスキル作成 |
+
+### インストール方法（Claude Code）
+
+```bash
+/plugin marketplace add anthropics/skills
+/plugin install document-skills@anthropic-agent-skills
+```
+
+**→ Anthropic 公式スキルの詳細は [docs/anthropics-skills.md](docs/anthropics-skills.md) を参照**
+
+---
+
 ## クイックスタートガイド
 
 ### 1. 最小構成で始める（GitHub Copilot）
@@ -462,6 +489,7 @@ Instructions、Prompts、Agents は GitHub Copilot のすべてのプラン（In
 - [GitHub Copilot ドキュメント](https://docs.github.com/copilot) — 公式ドキュメント
 - [Copilot のカスタマイズ方法](https://docs.github.com/copilot/customizing-copilot) — 公式カスタマイズガイド
 - [Claude Code 公式ドキュメント](https://docs.anthropic.com/ja/docs/claude-code/overview) — Claude Code の使い方
+- [anthropics/skills](https://github.com/anthropics/skills) — Anthropic 公式 Claude スキルリポジトリ
 - [Agentic Workflows ドキュメント](https://github.com/github/awesome-copilot/blob/main/docs/README.workflows.md) — AI 駆動ワークフローの一覧
 - [Hooks ドキュメント](https://github.com/github/awesome-copilot/blob/main/docs/README.hooks.md) — セッションイベント駆動フックの一覧
 - [Cookbook](https://github.com/github/awesome-copilot/blob/main/cookbook/README.md) — Copilot SDK を活用した実践的コードレシピ集
