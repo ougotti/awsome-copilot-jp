@@ -1,0 +1,85 @@
+name: anthropics/skills 更新チェック
+
+on:
+  schedule:
+    # 毎週月曜 09:00 JST (00:00 UTC) に実行
+    - cron: '0 0 * * 1'
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Dry run（Issue を作成しない）'
+        required: false
+        default: 'false'
+        type: boolean
+
+jobs:
+  check-updates:
+    name: anthropics/skills の新規スキルをチェック
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      contents: read
+
+    steps:
+      - name: リポジトリをチェックアウト
+        uses: actions/checkout@v4
+
+      - name: Python セットアップ
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: 更新チェックスクリプトを実行
+        id: check
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TRACKED_FILE: scripts/known-files.json
+        run: python scripts/check_anthropics_skills_updates.py
+
+      - name: 新規スキルがある場合 Issue を作成
+        if: steps.check.outputs.has_new_skills == 'true' && inputs.dry_run != 'true'
+        uses: actions/github-script@v8
+        with:
+          script: |
+            const fs = require('fs');
+            const report = JSON.parse(fs.readFileSync('anthropics_skills_report.json', 'utf8'));
+            const newSkills = report.new_skills;
+
+            const skillList = newSkills.map(s =>
+              `- [\`${s}\`](https://github.com/anthropics/skills/tree/main/skills/${s})`
+            ).join('\n');
+
+            const body = [
+              `## anthropics/skills に新しいスキルが追加されました`,
+              ``,
+              `[anthropics/skills](https://github.com/anthropics/skills) に **${newSkills.length} 個**の新しいスキルが追加されました。`,
+              `[docs/anthropics-skills.md](docs/anthropics-skills.md) への解説追加を検討してください。`,
+              ``,
+              `### 新しいスキル (${newSkills.length} 件)`,
+              ``,
+              skillList,
+              ``,
+              `---`,
+              ``,
+              `### 対応方法`,
+              ``,
+              `1. 上記スキルの \`SKILL.md\` を確認する`,
+              `2. \`docs/anthropics-skills.md\` に解説を追加する`,
+              `3. \`scripts/known-files.json\` の \`anthropics_skills\` リストを更新する`,
+              ``,
+              `> このIssueは [check-anthropics-skills-updates](../../actions/workflows/check-anthropics-skills-updates.yml) ワークフローにより自動生成されました。`,
+            ].join('\n');
+
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: `[更新通知] anthropics/skills に ${newSkills.length} 個の新規スキル追加 (${new Date().toISOString().split('T')[0]})`,
+              body,
+              labels: ['upstream-update', 'documentation'],
+            });
+
+            console.log(`Issue created: ${newSkills.length} new skills found`);
+
+      - name: 新規スキルなし（スキップ）
+        if: steps.check.outputs.has_new_skills != 'true'
+        run: echo "新規スキルはありませんでした。"
