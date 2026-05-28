@@ -11,6 +11,7 @@
 | **[Prompts / Skills 一覧](docs/prompts.md)** | `/` コマンドから呼び出せる再利用可能なタスクテンプレートおよび Skills の詳細解説 | 138+ 件 |
 | **[Claude Code スキル](docs/claude-code-skills.md)** | Claude Code 専用のスラッシュコマンド、カスタムコマンド、フック、CLAUDE.md、MCP 連携の解説 | — |
 | **[Anthropic 公式スキル](docs/anthropics-skills.md)** | [anthropics/skills](https://github.com/anthropics/skills) リポジトリ収録の 17 スキル（docx/pdf/pptx/xlsx 等）の詳細解説 | 17 件 |
+| **[Codex 公式スキル](docs/codex-skills.md)** | [openai/skills](https://github.com/openai/skills) リポジトリ収録の Codex Agent Skills（system/curated/experimental の 3 層構成）の詳細解説 | 40+ 件 |
 
 ---
 
@@ -409,6 +410,44 @@ Claude Code は Anthropic が提供するターミナルベースのコーディ
 ```
 
 **→ Anthropic 公式スキルの詳細は [docs/anthropics-skills.md](docs/anthropics-skills.md) を参照**
+
+---
+
+## Codex 公式スキル（Agent Skills）
+
+### 概要
+
+[openai/skills](https://github.com/openai/skills) は OpenAI が公開している Codex 用スキルのカタログリポジトリです。system / curated / experimental の 3 層構造で、デプロイ・Figma・Notion・セキュリティ・ブラウザ自動化など 40 種類以上のスキルが収録されています。
+
+### スキル階層
+
+| 階層 | 説明 | インストール |
+|-----|------|------------|
+| **System** | Codex に自動インストールされる基盤スキル（skill-installer, skill-creator 等） | 不要 |
+| **Curated** | OpenAI が精選した高品質スキル（linear, playwright, vercel-deploy 等） | スキル名で指定 |
+| **Experimental** | コミュニティ提供の実験的スキル | パス / URL で指定 |
+
+### インストール方法（Codex CLI）
+
+```bash
+# Codex セッション内で $skill-installer を使用
+$skill-installer linear
+$skill-installer playwright
+$skill-installer vercel-deploy
+```
+
+### 主なカテゴリ
+
+| カテゴリ | スキル例 |
+|---------|---------|
+| **デプロイ** | cloudflare-deploy / netlify-deploy / render-deploy / vercel-deploy |
+| **GitHub 連携** | gh-address-comments / gh-fix-ci |
+| **ブラウザ自動化** | playwright / playwright-interactive / screenshot |
+| **Figma** | figma-implement-design / figma-generate-design など 8 種 |
+| **Notion** | notion-spec-to-implementation / notion-meeting-intelligence など 4 種 |
+| **セキュリティ** | security-best-practices / security-threat-model など 3 種 |
+
+**→ Codex 公式スキルの詳細は [docs/codex-skills.md](docs/codex-skills.md) を参照**
 
 ---
 
