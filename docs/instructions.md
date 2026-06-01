@@ -1,6 +1,6 @@
 # Instructions 一覧と活用ガイド
 
-> [github/awesome-copilot](https://github.com/github/awesome-copilot) で公開されている **191 個の Instructions** を日本語で解説します。
+> [github/awesome-copilot](https://github.com/github/awesome-copilot) で公開されている **193 個の Instructions** を日本語で解説します。
 
 ## Instructions とは
 
@@ -308,6 +308,7 @@ applyTo: "**/*.py"
 | [`playwright-typescript.instructions.md`](https://github.com/github/awesome-copilot/blob/main/instructions/playwright-typescript.instructions.md) | Playwright（TypeScript）E2E テスト | ブラウザ自動テスト |
 | [`playwright-python.instructions.md`](https://github.com/github/awesome-copilot/blob/main/instructions/playwright-python.instructions.md) | Playwright（Python）E2E テスト | ブラウザ自動テスト |
 | [`playwright-dotnet.instructions.md`](https://github.com/github/awesome-copilot/blob/main/instructions/playwright-dotnet.instructions.md) | Playwright（.NET）E2E テスト | ブラウザ自動テスト |
+| [`qa-engineering-best-practices.instructions.md`](https://github.com/github/awesome-copilot/blob/main/instructions/qa-engineering-best-practices.instructions.md) | QA エンジニアリング全般のベストプラクティス | テスト戦略・設計・自動化・不具合管理 |
 
 **[playwright-typescript.instructions.md](https://github.com/github/awesome-copilot/blob/main/instructions/playwright-typescript.instructions.md) の主なルール:
 - アクセシビリティ優先のセレクター: `getByRole()`, `getByLabel()`（脆弱な CSS セレクターを避ける）
@@ -330,6 +331,7 @@ applyTo: "**/*.py"
 | [`self-explanatory-code-commenting.instructions.md`](https://github.com/github/awesome-copilot/blob/main/instructions/self-explanatory-code-commenting.instructions.md) | 自己説明的なコードとコメント | コード可読性 |
 | [`object-calisthenics.instructions.md`](https://github.com/github/awesome-copilot/blob/main/instructions/object-calisthenics.instructions.md) | Object Calisthenics（コード品質練習） | コード品質向上 |
 | [`oop-design-patterns.instructions.md`](https://github.com/github/awesome-copilot/blob/main/instructions/oop-design-patterns.instructions.md) | OOP デザインパターン（GoF パターン・SOLID 原則） | オブジェクト指向設計 |
+| [`exclude-prompt-data.instructions.md`](https://github.com/github/awesome-copilot/blob/main/instructions/exclude-prompt-data.instructions.md) | プロンプト由来の指示文やメタ情報を成果物へ混入させないルール | ドキュメント・コード生成時の情報漏えい防止 |
 | [`use-cliche-data-in-docs.instructions.md`](https://github.com/github/awesome-copilot/blob/main/instructions/use-cliche-data-in-docs.instructions.md) | ドキュメント・サンプルには実データでなく架空プレースホルダーを使用するルール | ドキュメント・サンプルコード記述 |
 
 **[security-and-owasp.instructions.md](https://github.com/github/awesome-copilot/blob/main/instructions/security-and-owasp.instructions.md) の主なルール:
